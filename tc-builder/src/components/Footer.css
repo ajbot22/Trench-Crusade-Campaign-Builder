@@ -1,0 +1,33 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--blue-grey);
+    border-top: 3px solid var(--red);
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .generate-button {
+    background-color: var(--red);
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .generate-button:hover {
+    background-color: darkred;
+  }
+  
+  @media (max-width: 768px) {
+    .generate-button {
+      font-size: 1rem;
+      padding: 8px 16px;
+    }
+  }
+  

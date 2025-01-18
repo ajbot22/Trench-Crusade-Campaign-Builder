@@ -1,42 +1,91 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root {
+  --blue-grey: #4a5568;
+  --white: #ffffff;
+  --red: #e1261c;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--blue-grey);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px; /* Limit the maximum width for larger screens */
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column; /* Stack sections vertically */
+  flex: 1;
+  width: 100%;
+  gap: 20px; /* Add space between sections */
+  box-sizing: border-box;
+}
+
+.upper-half,
+.lower-half {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* Stack content within sections vertically */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 2px solid var(--white);
+  border-radius: 10px;
+}
+
+.upper-half {
+  background-color: var(--white);
+  color: var(--blue-grey);
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Ensure this grows to fill the available space */
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.lower-half {
+  background-color: var(--blue-grey);
+  color: var(--white);
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 10px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .main-content {
+    gap: 10px;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .upper-half,
+  .lower-half {
+    padding: 15px;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .header {
+    padding: 15px;
+  }
 
-.read-the-docs {
-  color: #888;
+  .footer {
+    padding: 8px;
+  }
 }
