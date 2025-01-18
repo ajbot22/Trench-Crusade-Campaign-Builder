@@ -18,6 +18,8 @@ const App = () => {
     "By Round": "One player each cycle is not assigned a fight.",
     "Third Party Battle": "One player each cycle is assigned a third party battle. This battle is conducted with a player in or outside of the campaign with a warband no higher than your current threshold value.",
   };
+  const [specialRules, setSpecialRules] = useState("");
+
   const [objectives, setObjectives] = useState([
     { id: 1, name: "Objective 1", description: "Default description", restrictions: "None" },
     { id: 2, name: "Objective 2", description: "Another description", restrictions: "Some restrictions" },
@@ -63,7 +65,10 @@ const App = () => {
       setGloryPoints([...gloryPoints, entry]);
     } else if (currentTable === "Maps") {
       setMaps([...maps, entry]);
+    } else if (currentTable === "Deployment Type"){
+      setDeploymentTypes([...deploymentTypes, entry]);
     }
+    
   
     closePopup();
   };
@@ -113,10 +118,18 @@ const App = () => {
               </button>
             </div>
 
+            {/* Rules Box */}
+            <label>Special Rules:</label>
+            <textarea
+              className="rules-box"
+              value={specialRules}
+              onChange={(e) => setSpecialRules(e.target.value)}
+              placeholder="Write any special rules for the game here..."
+            ></textarea>
+
             {/* Right Section: Game Settings */}
             <div className="game-settings-container">
               <h2>Game Settings</h2>
-
               {/* Number of Games */}
               <label htmlFor="games-input">Number of Games:</label>
               <input
