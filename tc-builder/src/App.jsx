@@ -32,6 +32,12 @@ const App = () => {
     { id: 1, name: "Map 1", description: "Default description", restrictions: "None" },
     { id: 2, name: "Map 2", description: "Another description", restrictions: "Some restrictions" },
   ]);
+
+  const [deploymentTypes, setDeploymentTypes] = useState([
+    { id: 1, name: "Deployment 1", description: "Default deployment", restrictions: "None" },
+    { id: 2, name: "Deployment 2", description: "Another deployment", restrictions: "Some restrictions" },
+  ]);
+  
   
   const [popupOpen, setPopupOpen] = useState(false);
   const [currentTable, setCurrentTable] = useState("");
@@ -146,105 +152,134 @@ const App = () => {
 
 
         <div className="bottom-half">
-    <div className="bottom-flex-container">
-      {/* Objectives Table */}
-      <div className="table-container">
-        <h2>Objectives</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Restrictions</th>
+  <div className="bottom-grid-container">
+    {/* Objectives Table */}
+    <div className="table-container">
+      <h2>Objectives</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Restrictions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {objectives.map((entry) => (
+            <tr key={entry.id}>
+              <td>{entry.id}</td>
+              <td>{entry.name}</td>
+              <td>{entry.description}</td>
+              <td>{entry.restrictions || "None"}</td>
             </tr>
-          </thead>
-          <tbody>
-            {objectives.map((entry) => (
-              <tr key={entry.id}>
-                <td>{entry.id}</td>
-                <td>{entry.name}</td>
-                <td>{entry.description}</td>
-                <td>{entry.restrictions || "None"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <button onClick={() => openPopup("Objectives")}>Add Entry</button>
-      </div>
-
-      {/* Glory Points Table */}
-      <div className="table-container">
-        <h2>Glory Points</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {gloryPoints.map((entry) => (
-              <tr key={entry.id}>
-                <td>{entry.id}</td>
-                <td>{entry.name}</td>
-                <td>{entry.description}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <button onClick={() => openPopup("Glory Points")}>Add Entry</button>
-      </div>
-
-      {/* Maps Table */}
-      <div className="table-container">
-        <h2>Maps</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Restrictions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {maps.map((entry) => (
-              <tr key={entry.id}>
-                <td>{entry.id}</td>
-                <td>{entry.name}</td>
-                <td>{entry.description}</td>
-                <td>{entry.restrictions || "None"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <button onClick={() => openPopup("Maps")}>Add Entry</button>
-      </div>
+          ))}
+        </tbody>
+      </table>
+      <button onClick={() => openPopup("Objectives")}>Add Entry</button>
     </div>
 
-    {/* Popup for Adding Entries */}
-    {popupOpen && (
-      <div className="popup-overlay">
-        <div className="popup">
-          <h3>Add Entry to {currentTable}</h3>
-          <label>Name:</label>
-          <input type="text" value={newEntry.name} onChange={(e) => setNewEntry({ ...newEntry, name: e.target.value })} />
-          <label>Description:</label>
-          <textarea value={newEntry.description} onChange={(e) => setNewEntry({ ...newEntry, description: e.target.value })}></textarea>
-          {currentTable !== "Glory Points" && (
-            <>
-              <label>Restrictions:</label>
-              <input type="text" value={newEntry.restrictions} onChange={(e) => setNewEntry({ ...newEntry, restrictions: e.target.value })} />
-            </>
-          )}
+    {/* Glory Points Table */}
+    <div className="table-container">
+      <h2>Glory Points</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {gloryPoints.map((entry) => (
+            <tr key={entry.id}>
+              <td>{entry.id}</td>
+              <td>{entry.name}</td>
+              <td>{entry.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <button onClick={() => openPopup("Glory Points")}>Add Entry</button>
+    </div>
+
+    {/* Maps Table */}
+    <div className="table-container">
+      <h2>Maps</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Restrictions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {maps.map((entry) => (
+            <tr key={entry.id}>
+              <td>{entry.id}</td>
+              <td>{entry.name}</td>
+              <td>{entry.description}</td>
+              <td>{entry.restrictions || "None"}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <button onClick={() => openPopup("Maps")}>Add Entry</button>
+    </div>
+
+    {/* Deployment Type Table */}
+    <div className="table-container">
+      <h2>Deployment Type</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Restrictions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {deploymentTypes.map((entry) => (
+            <tr key={entry.id}>
+              <td>{entry.id}</td>
+              <td>{entry.name}</td>
+              <td>{entry.description}</td>
+              <td>{entry.restrictions || "None"}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <button onClick={() => openPopup("Deployment Type")}>Add Entry</button>
+    </div>
+  </div>
+
+  {/* Popup for Adding Entries */}
+  {popupOpen && (
+    <div className="popup-overlay">
+      <div className="popup">
+        <h3>Add Entry to {currentTable}</h3>
+        <label>Name:</label>
+        <input type="text" value={newEntry.name} onChange={(e) => setNewEntry({ ...newEntry, name: e.target.value })} />
+        <label>Description:</label>
+        <textarea value={newEntry.description} onChange={(e) => setNewEntry({ ...newEntry, description: e.target.value })}></textarea>
+        {currentTable !== "Glory Points" && (
+          <>
+            <label>Restrictions:</label>
+            <input type="text" value={newEntry.restrictions} onChange={(e) => setNewEntry({ ...newEntry, restrictions: e.target.value })} />
+          </>
+        )}
+        <div className="popup-buttons">
           <button onClick={addEntry}>Save</button>
           <button onClick={closePopup}>Cancel</button>
         </div>
       </div>
-    )}
-  </div>
+    </div>
+  )}
+</div>
+
       </main>
       <Footer />
     </div>
