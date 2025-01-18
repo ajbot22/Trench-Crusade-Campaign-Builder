@@ -188,24 +188,24 @@ body {
 /* Flex container for the upper half */
 .upper-flex-container {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
   gap: 20px;
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
 }
 
-/* Players list container */
+/* Left section: Players and Rules */
+.player-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 45%;
+}
+
+/* Player list container */
 .player-list-container {
-  flex: 1; /* Allow it to take equal space with game settings */
-  min-width: 300px;
-  border: 2px solid var(--blue-grey);
-  border-radius: 8px;
-  background-color: var(--white);
+  background-color: #f9f9f9;
   padding: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  border: 1px solid var(--blue-grey);
 }
 
 /* Game settings container */
@@ -240,14 +240,24 @@ body {
   margin-top: 10px;
 }
 
+.rules-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.rules-container label {
+  margin-bottom: 5px;
+  font-size: 1em;
+  color: var(--blue-grey);
+}
+
 .rules-box {
   width: 100%;
-  height: 80px;
-  margin-top: 10px;
+  height: 100px;
   padding: 8px;
   border: 1px solid var(--blue-grey);
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: #fff;
   color: #333;
   font-size: 1em;
 }
@@ -255,6 +265,7 @@ body {
 .rules-box::placeholder {
   color: #aaa;
 }
+
 
 /* Players list input fields */
 .player-list {

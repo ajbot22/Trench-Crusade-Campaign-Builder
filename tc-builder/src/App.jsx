@@ -96,10 +96,11 @@ const App = () => {
       <Header />
       
       <main className="main-content">
-        <div className="upper-half">
-          {/* Wrap players list and game settings in a flex container */}
-          <div className="upper-flex-container">
-            {/* Left Section: Player Input */}
+      <div className="upper-half">
+        {/* Flex Container for Upper Section */}
+        <div className="upper-flex-container">
+          {/* Left Section: Player Input + Rules */}
+          <div className="player-section">
             <div className="player-list-container">
               <h2>Players</h2>
               <div className="player-list">
@@ -119,49 +120,54 @@ const App = () => {
             </div>
 
             {/* Rules Box */}
-            <label>Special Rules:</label>
-            <textarea
-              className="rules-box"
-              value={specialRules}
-              onChange={(e) => setSpecialRules(e.target.value)}
-              placeholder="Write any special rules for the game here..."
-            ></textarea>
+            <div className="rules-container">
+              <label htmlFor="rules-box">Special Rules:</label>
+              <textarea
+                id="rules-box"
+                className="rules-box"
+                value={specialRules}
+                onChange={(e) => setSpecialRules(e.target.value)}
+                placeholder="Write any special rules for the game here..."
+              ></textarea>
+            </div>
+          </div>
 
-            {/* Right Section: Game Settings */}
-            <div className="game-settings-container">
-              <h2>Game Settings</h2>
-              {/* Number of Games */}
-              <label htmlFor="games-input">Number of Games:</label>
-              <input
-                id="games-input"
-                type="number"
-                min="1"
-                value={games}
-                onChange={(e) => setGames(Number(e.target.value))}
-              />
+          {/* Right Section: Game Settings */}
+          <div className="game-settings-container">
+            <h2>Game Settings</h2>
+            {/* Number of Games */}
+            <label htmlFor="games-input">Number of Games:</label>
+            <input
+              id="games-input"
+              type="number"
+              min="1"
+              value={games}
+              onChange={(e) => setGames(Number(e.target.value))}
+            />
 
-              {/* Odd Number Algorithm Dropdown */}
-              <label htmlFor="algorithm-dropdown">Odd Number Algorithm:</label>
-              <select
-                id="algorithm-dropdown"
-                value={selectedAlgorithm}
-                onChange={handleAlgorithmChange}
-              >
-                {Object.keys(algorithms).map((algorithm, index) => (
-                  <option key={index} value={algorithm}>
-                    {algorithm}
-                  </option>
-                ))}
-              </select>
+            {/* Odd Number Algorithm Dropdown */}
+            <label htmlFor="algorithm-dropdown">Odd Number Algorithm:</label>
+            <select
+              id="algorithm-dropdown"
+              value={selectedAlgorithm}
+              onChange={handleAlgorithmChange}
+            >
+              {Object.keys(algorithms).map((algorithm, index) => (
+                <option key={index} value={algorithm}>
+                  {algorithm}
+                </option>
+              ))}
+            </select>
 
-              {/* Algorithm Description */}
-              <div className="algorithm-description">
-                <h3>Algorithm Description</h3>
-                <p>{algorithmDescription}</p>
-              </div>
+            {/* Algorithm Description */}
+            <div className="algorithm-description">
+              <h3>Algorithm Description</h3>
+              <p>{algorithmDescription}</p>
             </div>
           </div>
         </div>
+      </div>
+
 
 
         <div className="bottom-half">
