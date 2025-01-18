@@ -1,91 +1,62 @@
-:root {
-  --blue-grey: #4a5568;
-  --white: #ffffff;
-  --red: #e1261c;
-}
-
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: var(--blue-grey);
-  color: var(--white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-.app {
+.player-list-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1200px; /* Limit the maximum width for larger screens */
-  height: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.main-content {
-  display: flex;
-  flex-direction: column; /* Stack sections vertically */
-  flex: 1;
-  width: 100%;
-  gap: 20px; /* Add space between sections */
-  box-sizing: border-box;
-}
-
-.upper-half,
-.lower-half {
-  flex: 1;
-  display: flex;
-  flex-direction: column; /* Stack content within sections vertically */
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-  border: 2px solid var(--white);
-  border-radius: 10px;
-}
-
-.upper-half {
+  max-width: 400px; /* Limit the width for better aesthetics */
+  padding: 10px;
+  border: 2px solid var(--blue-grey);
+  border-radius: 8px;
   background-color: var(--white);
-  color: var(--blue-grey);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.main-content {
+.player-list-container h2 {
+  margin: 0 0 10px 0;
+  color: var(--blue-grey);
+  text-align: center;
+}
+
+.player-list {
   display: flex;
   flex-direction: column;
-  flex: 1; /* Ensure this grows to fill the available space */
-  gap: 20px;
-  padding: 20px;
+  gap: 10px;
+  max-height: 200px; /* Limit height to make it scrollable */
+  overflow-y: auto;
+  padding-right: 5px; /* Add space for scroll bar */
+}
+
+.player-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.player-list::-webkit-scrollbar-thumb {
+  background-color: var(--blue-grey);
+  border-radius: 4px;
+}
+
+.player-list::-webkit-scrollbar-thumb:hover {
+  background-color: var(--red);
+}
+
+.player-list input {
+  padding: 8px;
+  border: 1px solid var(--blue-grey);
+  border-radius: 4px;
+  font-size: 1rem;
   box-sizing: border-box;
 }
 
-.lower-half {
-  background-color: var(--blue-grey);
+.add-player-button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: var(--red);
   color: var(--white);
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .app {
-    padding: 10px;
-  }
-
-  .main-content {
-    gap: 10px;
-  }
-
-  .upper-half,
-  .lower-half {
-    padding: 15px;
-  }
-
-  .header {
-    padding: 15px;
-  }
-
-  .footer {
-    padding: 8px;
-  }
+.add-player-button:hover {
+  background-color: darkred;
 }
