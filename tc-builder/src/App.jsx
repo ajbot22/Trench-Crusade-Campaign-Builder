@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import "./App.css";
+import { useState } from 'react'
+import Header from './components/Header';
+import Footer from './components/Footer';
+import './App.css'
 
-function App() {
+const App = () => {
+
   const [players, setPlayers] = useState([""]); // Initialize with one empty player
 
-  // Handler to add a new player input field
   const addPlayer = () => {
     setPlayers([...players, ""]);
   };
@@ -16,18 +18,13 @@ function App() {
     setPlayers(updatedPlayers);
   };
 
+
   return (
     <div className="app">
-      <header className="header">
-        <h1>Trench Crusade Campaign Builder</h1>
-        <p>
-          <a href="https://github.com/your-repo-link">GitHub Repo</a> | ajbotcs@gmail.com
-        </p>
-      </header>
-
+      <Header />
       <main className="main-content">
-        <div className="upper-half">
-          <div className="player-list-container">
+        <section className="upper-half">
+        <div className="player-list-container">
             <h2>Players</h2>
             <div className="player-list">
               {players.map((player, index) => (
@@ -45,15 +42,15 @@ function App() {
             </button>
           </div>
           <div className="right-content">Right Content</div>
-        </div>
-        <div className="lower-half">Lower Content</div>
+        </section>
+        <section className="lower-half">
+          <p>Placeholder for lower half content</p>
+        </section>
       </main>
-
-      <footer className="footer">
-        <button className="generate-button">Generate Campaign</button>
-      </footer>
+      <Footer />
     </div>
   );
-}
+};
 
-export default App;
+
+export default App
