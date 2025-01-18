@@ -185,6 +185,77 @@ body {
   font-size: 0.9rem;
   color: #555;
 }
+/* Flex container for the upper half */
+.upper-flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Players list container */
+.player-list-container {
+  flex: 1; /* Allow it to take equal space with game settings */
+  min-width: 300px;
+  border: 2px solid var(--blue-grey);
+  border-radius: 8px;
+  background-color: var(--white);
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Game settings container */
+.game-settings-container {
+  flex: 1; /* Allow it to take equal space with players list */
+  min-width: 300px;
+  padding: 10px;
+  border: 2px solid var(--blue-grey);
+  border-radius: 8px;
+  background-color: var(--white);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Algorithm Description Styling */
+.algorithm-description h3 {
+  font-size: 1rem; /* Smaller font size */
+  text-decoration: underline; /* Underlined text */
+  color: var(--blue-grey);
+  margin-bottom: 5px;
+}
+
+.algorithm-description p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Players list input fields */
+.player-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 200px; /* Limit height for scroll */
+  overflow-y: auto; /* Enable scrolling */
+}
+
+.add-player-button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.add-player-button:hover {
+  background-color: darkred;
+}
 
 @media (max-width: 768px) {
   .app {

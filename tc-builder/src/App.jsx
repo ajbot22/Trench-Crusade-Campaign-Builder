@@ -43,63 +43,69 @@ const App = () => {
       <Header />
       
       <main className="main-content">
-        <section className="upper-half">
-        <div className="player-list-container">
-            <h2>Players</h2>
-            <div className="player-list">
-              {players.map((player, index) => (
-                <input
-                  key={index}
-                  type="text"
-                  placeholder={`Player ${index + 1}`}
-                  value={player}
-                  onChange={(e) => updatePlayer(index, e.target.value)}
-                />
-              ))}
+        <div className="upper-half">
+          {/* Wrap players list and game settings in a flex container */}
+          <div className="upper-flex-container">
+            {/* Left Section: Player Input */}
+            <div className="player-list-container">
+              <h2>Players</h2>
+              <div className="player-list">
+                {players.map((player, index) => (
+                  <input
+                    key={index}
+                    type="text"
+                    placeholder={`Player ${index + 1}`}
+                    value={player}
+                    onChange={(e) => updatePlayer(index, e.target.value)}
+                  />
+                ))}
+              </div>
+              <button className="add-player-button" onClick={addPlayer}>
+                Add Player
+              </button>
             </div>
-            <button className="add-player-button" onClick={addPlayer}>
-              Add Player
-            </button>
-          </div>
 
-          <div className="game-settings-container">
-            <h2>Game Settings</h2>
+            {/* Right Section: Game Settings */}
+            <div className="game-settings-container">
+              <h2>Game Settings</h2>
 
-            {/* Number of Games */}
-            <label htmlFor="games-input">Number of Games:</label>
-            <input
-              id="games-input"
-              type="number"
-              min="1"
-              value={games}
-              onChange={(e) => setGames(Number(e.target.value))}
-            />
+              {/* Number of Games */}
+              <label htmlFor="games-input">Number of Games:</label>
+              <input
+                id="games-input"
+                type="number"
+                min="1"
+                value={games}
+                onChange={(e) => setGames(Number(e.target.value))}
+              />
 
-            {/* Odd Number Algorithm Dropdown */}
-            <label htmlFor="algorithm-dropdown">Odd Number Algorithm:</label>
-            <select
-              id="algorithm-dropdown"
-              value={selectedAlgorithm}
-              onChange={handleAlgorithmChange}
-            >
-              {Object.keys(algorithms).map((algorithm, index) => (
-                <option key={index} value={algorithm}>
-                  {algorithm}
-                </option>
-              ))}
-            </select>
+              {/* Odd Number Algorithm Dropdown */}
+              <label htmlFor="algorithm-dropdown">Odd Number Algorithm:</label>
+              <select
+                id="algorithm-dropdown"
+                value={selectedAlgorithm}
+                onChange={handleAlgorithmChange}
+              >
+                {Object.keys(algorithms).map((algorithm, index) => (
+                  <option key={index} value={algorithm}>
+                    {algorithm}
+                  </option>
+                ))}
+              </select>
 
-            {/* Algorithm Description */}
-            <div className="algorithm-description">
-              <h3>Algorithm Description</h3>
-              <p>{algorithmDescription}</p>
+              {/* Algorithm Description */}
+              <div className="algorithm-description">
+                <h3>Algorithm Description</h3>
+                <p>{algorithmDescription}</p>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
 
-        <section className="lower-half">
+
+        <div className="lower-half">
           <p>Placeholder for lower half content</p>
-        </section>
+        </div>
       </main>
       <Footer />
     </div>
